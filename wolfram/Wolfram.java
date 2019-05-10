@@ -2,8 +2,7 @@ import java.awt.GraphicsEnvironment;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class RuleInput {
-	final String mundoInicialPadrao = "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000";
+public class Wolfram {
 	// Retorna array de numeros a partir de uma string
 	private static int[] stringToIntArray(String string) {
 		char[] chars = string.toCharArray();
@@ -57,15 +56,21 @@ public class RuleInput {
 
 		// Validação da entrada do usuário
 		if (args.length < 1 || args.length > 2) {
-			System.out.println("USO: java twodimensional.RuleInput <NumeroDaRegra> [MundoInicial]");
-			System.out.println("MundoInicial deve ser uma string de 0 e 1, onde 0 representa uma célula morta, e 1 uma viva. O parâmetro é opcional.");
+			System.out.println("USO: java Wolfram <NumeroDaRegra> [MundoInicial]");
+			System.out.println("MundoInicial deve ser uma string de 0 e 1, onde 0 representa uma célula morta, e 1 uma viva.");
+			System.out.println("Pode ser também o caracter 'R', para um mundo aleatório (pre-definido). O parâmetro é opcional.");
 			System.out.println("Para resultados melhores, use strings longas para MundoInicial");
 		} else if (args.length == 1) {
 			inputRegra = args[0];
-			inputMundo = MundoInicialPadrao.getMundoPadrao();
+			inputMundo = MundoInicial.getMundoPadrao();
 		} else if (args.length == 2) {
 			inputRegra = args[0];
-			inputMundo = args[1];
+
+			if (inputMundo === 'R' || inputMundo === 'r') {
+				inputMundo = MundoInicial.getMundoAleatorio();
+			} else {
+				inputMundo = args[1];
+			}
 		}
 
 		if (inputValido) {
@@ -90,7 +95,7 @@ public class RuleInput {
 				display = atualizaGUI(display, mundo, tamArray); // Atualiza a interface
 				gui.draw(display); // Desenha
 				mundo = atualizaMundo(mundo, regra); // Atualiza o estado
-				Thread.sleep(50); // Intervalo entre frames
+				Thread.sleep(50); // Intervalo entre frames (em ms)
 			}
 		}
 	}
