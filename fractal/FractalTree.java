@@ -25,6 +25,12 @@ public class FractalTree extends Shape {
 		super(main, "Fractal Tree");
 	}
 
+	public FractalTree(Main main, double angle1, double angle2) {
+		super(main, "Fractal Tree");
+        this.angle1 = angle1;
+        this.angle2 = angle2;
+	}
+
     // Inicialização da criação da árvore, faz a primeira
     // chamada para a função recursiva "fractal"
 	public void begin(Graphics g, int count) {

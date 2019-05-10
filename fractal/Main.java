@@ -10,9 +10,9 @@ public class Main {
 	private Frame frame;
 	private Shape currentShape;
 	
-	public Main() {
+	public Main(double angle1, double angle2, int numberOfIterations, int updateRate) {
         // Cria o objeto que desenhará o Fractal, o Frame no qual ele será desenhado e a BufferStrategy
-		currentShape = new FractalTree(this);
+		currentShape = new FractalTree(this, angle1, angle2);
 		frame 		 = new Frame(currentShape.getName());
 		
 		BufferStrategy bs = frame.getBufferStrategy();
@@ -32,7 +32,7 @@ public class Main {
         //
         // Perto da 15ª iteração já não conseguimos ver mudanças na árvore,
         // apenas se tivermos algum zoom
-        for (int count = 1; count <= 20; count++) {
+        for (int count = 1; count <= numberOfIterations; count++) {
             Graphics g = bs.getDrawGraphics();
 			
 			g.setColor(Color.BLACK);
@@ -49,7 +49,7 @@ public class Main {
 
             // Pausa 2 segundos o frame para conseguirmos ver a construção da árvore com calma
             try {
-                TimeUnit.MILLISECONDS.sleep(1500);
+                TimeUnit.MILLISECONDS.sleep(updateRate);
             } catch (Exception e) {
                 System.out.println("error");
             }
@@ -61,6 +61,25 @@ public class Main {
 	}
 	
 	public static void main(String[] args) {
-		new Main();
+
+        double angle1, angle2;
+        int numberOfIterations, updateRate;
+
+		// Validação da entrada do usuário
+		if (args.length != 4) {
+			System.out.println("USO: java Main <angulo1> <angulo2> <numDeIteracoes> <tempoDeExibicao>");
+			System.out.println("`angulo1` e `angulo2` são os ângulos dos ramos da árvore, em graus");
+			System.out.println("numDeIteracoes é a quantidade de iterações da árvore (profundidade)");
+			System.out.println("tempoDeExibicao é o tempo em milissegundos de exibição de cada iteração da árvore");
+
+            return;
+		} else {
+			angle1 = Integer.parseInt(args[0])*(Math.PI/180);
+			angle2 = Integer.parseInt(args[1])*(Math.PI/180);
+			numberOfIterations = Integer.parseInt(args[2]);
+			updateRate = Integer.parseInt(args[3]);
+        }
+
+		new Main(angle1, angle2, numberOfIterations, updateRate);
 	}
 }
