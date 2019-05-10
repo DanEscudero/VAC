@@ -66,7 +66,7 @@ public class Wolfram {
 		} else if (args.length == 2) {
 			inputRegra = args[0];
 
-			if (inputMundo === 'R' || inputMundo === 'r') {
+			if (args[1].charAt(0) == 'R' || args[1].charAt(0) == 'r') {
 				inputMundo = MundoInicial.getMundoAleatorio();
 			} else {
 				inputMundo = args[1];
