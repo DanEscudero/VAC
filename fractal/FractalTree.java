@@ -7,9 +7,9 @@ import java.awt.Graphics2D;
 // Classe responsável pelo fractal 
 //
 // Esse fractal será uma arvore, na qual começamos com uma 
-// linha e partir dela saem outras 2, com uma rotação de 45º
-// para cada. Repetimos então a criação dessas outras 2 
-// linhas para cada linha que adicionarmos na árvore.
+// linha e partir dela saem outras 2, com uma rotação de 
+// alguns graus para cada. Repetimos então a criação dessas 
+// outras 2 linhas para cada linha que adicionarmos na árvore.
 
 public class FractalTree extends Shape {
     // Inicialização das variáveis principais da classe

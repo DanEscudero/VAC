@@ -26,12 +26,11 @@ public class Main {
         // Loop de renderização: irá desenhar o frame na tela.
         // A cada iteração, o frame é redesenhado com as atualizações da imagem.
         //
-        // Desenha a árvore fractal com 1 iteração até 20 iterações.
+        // Desenha a árvore fractal com 1 iteração até `numberOfIterations` iterações.
+        //
         // A cada iteração `n`, desenha a árvore fractal com `n` passos, i.e,
         // `n` passos de bifurcação (ou profundidade)
-        //
-        // Perto da 15ª iteração já não conseguimos ver mudanças na árvore,
-        // apenas se tivermos algum zoom
+        
         for (int count = 1; count <= numberOfIterations; count++) {
             Graphics g = bs.getDrawGraphics();
 			
@@ -47,7 +46,7 @@ public class Main {
 			g.dispose();	
 			bs.show();
 
-            // Pausa 2 segundos o frame para conseguirmos ver a construção da árvore com calma
+            // Pausa o Frame por alguns tempo para conseguirmos ver a construção da árvore a cada iteração
             try {
                 TimeUnit.MILLISECONDS.sleep(updateRate);
             } catch (Exception e) {
