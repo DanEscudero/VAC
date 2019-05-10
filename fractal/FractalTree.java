@@ -15,7 +15,7 @@ public class FractalTree extends Shape {
     // Inicialização das variáveis principais da classe
     
 	private Graphics2D g;
-	private int length	  = 300;
+	private int length	  = 250;
 
     // O angulo de rotação para  a criação da arvore
 	private double angle1 = Math.PI / 4, 
